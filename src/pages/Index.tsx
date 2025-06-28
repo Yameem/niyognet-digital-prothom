@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CheckCircle, MessageSquare, Shield, Star, Search } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const testimonials = [
   {
@@ -33,11 +34,13 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const { t } = useLanguage();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
-  const [projectBudget, setProjectBudget] = useState("");
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const Index = () => {
 
   const handleProjectSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Project submitted:", { projectTitle, projectDescription, projectBudget });
+    console.log("Project submitted:", { projectTitle, projectDescription, minBudget, maxBudget });
     setIsDialogOpen(false);
     // Navigate to search page with AI matches
   };
@@ -76,10 +79,10 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in text-gray-900">
-            যাচাইকৃত স্থানীয় প্রতিভার সাথে সংযোগ — দ্রুত, সাশ্রয়ী, নির্ভরযোগ্য
+            {t('hero.title')}
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in text-gray-800">
-            পোর্টফলিও ব্রাউজ করুন, মাইলস্টোন সেট করুন, বিকাশ ও নগদের মাধ্যমে নিরাপদে পেমেন্ট করুন
+            {t('hero.subtitle')}
           </p>
           
           {/* Search Bar */}
@@ -87,14 +90,14 @@ const Index = () => {
             <div className="flex bg-white rounded-lg p-2 shadow-lg">
               <Input
                 type="text"
-                placeholder="আপনি কোন সেবা খুঁজছেন?"
+                placeholder={t('hero.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 border-0 text-gray-900 text-lg focus-visible:ring-0"
               />
               <Button type="submit" size="lg" className="bg-green-700 hover:bg-green-800 text-white px-8">
                 <Search className="h-5 w-5 mr-2" />
-                খুঁজুন
+                {t('hero.searchButton')}
               </Button>
             </div>
           </form>
@@ -105,7 +108,7 @@ const Index = () => {
       <section id="how-it-works" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">
-            এটি কীভাবে কাজ করে
+            {t('howItWorks.title')}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -114,8 +117,8 @@ const Index = () => {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="h-8 w-8 text-green-700" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">আপনার প্রকল্প পোস্ট করুন</h3>
-                <p className="text-gray-600">মিনিটেই আপনার বিবরণ, বাজেট এবং সময়সীমা জমা দিন</p>
+                <h3 className="text-xl font-semibold mb-4">{t('howItWorks.step1.title')}</h3>
+                <p className="text-gray-600">{t('howItWorks.step1.desc')}</p>
               </CardContent>
             </Card>
             
@@ -124,8 +127,8 @@ const Index = () => {
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <MessageSquare className="h-8 w-8 text-blue-700" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">ম্যাচ ও চ্যাট</h3>
-                <p className="text-gray-600">আমরা সত্যিকারের পোর্টফলিও সহ শীর্ষ ফ্রিল্যান্সারদের সুপারিশ করি</p>
+                <h3 className="text-xl font-semibold mb-4">{t('howItWorks.step2.title')}</h3>
+                <p className="text-gray-600">{t('howItWorks.step2.desc')}</p>
               </CardContent>
             </Card>
             
@@ -134,8 +137,8 @@ const Index = () => {
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Shield className="h-8 w-8 text-yellow-700" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">অনুমোদন ও পেমেন্ট</h3>
-                <p className="text-gray-600">প্রতিটি মাইলস্টোন অনুমোদিত হওয়ার সাথে সাথে পেমেন্ট ছাড় করুন</p>
+                <h3 className="text-xl font-semibold mb-4">{t('howItWorks.step3.title')}</h3>
+                <p className="text-gray-600">{t('howItWorks.step3.desc')}</p>
               </CardContent>
             </Card>
           </div>
@@ -146,31 +149,31 @@ const Index = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">
-            কেন নিয়োগনেট বেছে নেবেন?
+            {t('features.title')}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow hover-scale">
               <CardContent className="pt-4">
                 <Star className="h-12 w-12 text-green-700 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-3">বাস্তব পোর্টফলিও ও রিভিউ</h3>
-                <p className="text-gray-600 text-sm">আগে/পরে নমুনা এবং ক্লায়েন্ট রেটিং দেখুন</p>
+                <h3 className="text-lg font-semibold mb-3">{t('features.portfolios.title')}</h3>
+                <p className="text-gray-600 text-sm">{t('features.portfolios.desc')}</p>
               </CardContent>
             </Card>
             
             <Card className="text-center p-6 hover:shadow-lg transition-shadow hover-scale">
               <CardContent className="pt-4">
                 <Shield className="h-12 w-12 text-blue-700 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-3">মাইলস্টোন পেমেন্ট</h3>
-                <p className="text-gray-600 text-sm">আপনার শর্তে নিরাপদ পেমেন্ট ছাড়</p>
+                <h3 className="text-lg font-semibold mb-3">{t('features.payments.title')}</h3>
+                <p className="text-gray-600 text-sm">{t('features.payments.desc')}</p>
               </CardContent>
             </Card>
             
             <Card className="text-center p-6 hover:shadow-lg transition-shadow hover-scale">
               <CardContent className="pt-4">
                 <CheckCircle className="h-12 w-12 text-purple-700 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-3">গাইডেড ওয়ার্কফ্লো</h3>
-                <p className="text-gray-600 text-sm">স্পষ্ট প্রকল্প পদক্ষেপ দিয়ে ট্র্যাকে থাকুন</p>
+                <h3 className="text-lg font-semibold mb-3">{t('features.workflow.title')}</h3>
+                <p className="text-gray-600 text-sm">{t('features.workflow.desc')}</p>
               </CardContent>
             </Card>
             
@@ -180,8 +183,8 @@ const Index = () => {
                   <div className="w-8 h-8 bg-pink-500 rounded flex items-center justify-center text-white text-xs font-bold">b</div>
                   <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">N</div>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">স্থানীয় পেমেন্ট</h3>
-                <p className="text-gray-600 text-sm">বিকাশ ও নগদের মাধ্যমে তাৎক্ষণিক, কম ফি ট্রান্সফার</p>
+                <h3 className="text-lg font-semibold mb-3">{t('features.localPayments.title')}</h3>
+                <p className="text-gray-600 text-sm">{t('features.localPayments.desc')}</p>
               </CardContent>
             </Card>
           </div>
@@ -192,7 +195,7 @@ const Index = () => {
       <section className="py-20 bg-green-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">
-            আমাদের ক্লায়েন্টরা কী বলেন
+            {t('testimonials.title')}
           </h2>
           
           <div className="max-w-4xl mx-auto">
@@ -240,75 +243,89 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-green-700 text-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Part - Find Talent */}
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                আপনার প্রকল্প শুরু করতে প্রস্তুত?
-              </h2>
-              <p className="text-xl mb-8">
-                হাজারো স্থানীয় ব্যবসার সাথে যোগ দিন যারা তাদের ফ্রিল্যান্সিং প্রয়োজনে নিয়োগনেটে বিশ্বাস করে
-              </p>
-              <Link to="/search-talent">
-                <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-lg px-8 py-4">
-                  এখনই প্রতিভা খুঁজুন
-                </Button>
-              </Link>
-            </div>
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              {t('cta.title')}
+            </h2>
+            <p className="text-xl mb-8">
+              {t('cta.subtitle')}
+            </p>
+            <Link to="/search-talent">
+              <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-lg px-8 py-4">
+                {t('cta.findTalentButton')}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-            {/* Right Part - Project Form */}
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">বা আপনার প্রকল্প পোস্ট করুন</h3>
-              <p className="text-lg mb-6">AI ম্যাচিং সহ সেরা ফ্রিল্যান্সারদের পান</p>
-              
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-700 text-lg px-8 py-4">
-                    প্রকল্প পোস্ট করুন
+      {/* AI Matching Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+              {t('aiMatching.title')}
+            </h2>
+            <p className="text-xl mb-8 text-gray-700">
+              {t('aiMatching.subtitle')}
+            </p>
+            
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-green-700 hover:bg-green-800 text-white text-lg px-8 py-4">
+                  {t('aiMatching.button')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>{t('projectForm.title')}</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleProjectSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="project-title">{t('projectForm.titleLabel')}</Label>
+                    <Input
+                      id="project-title"
+                      value={projectTitle}
+                      onChange={(e) => setProjectTitle(e.target.value)}
+                      placeholder={t('projectForm.titlePlaceholder')}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="project-description">{t('projectForm.descriptionLabel')}</Label>
+                    <Textarea
+                      id="project-description"
+                      value={projectDescription}
+                      onChange={(e) => setProjectDescription(e.target.value)}
+                      placeholder={t('projectForm.descriptionPlaceholder')}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label>{t('projectForm.budgetLabel')}</Label>
+                    <div className="grid grid-cols-2 gap-4">
+                      <Input
+                        type="number"
+                        value={minBudget}
+                        onChange={(e) => setMinBudget(e.target.value)}
+                        placeholder={t('projectForm.minBudgetPlaceholder')}
+                        required
+                      />
+                      <Input
+                        type="number"
+                        value={maxBudget}
+                        onChange={(e) => setMaxBudget(e.target.value)}
+                        placeholder={t('projectForm.maxBudgetPlaceholder')}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <Button type="submit" className="w-full bg-green-700 hover:bg-green-800">
+                    {t('projectForm.submitButton')}
                   </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle>আপনার প্রকল্পের বিবরণ</DialogTitle>
-                  </DialogHeader>
-                  <form onSubmit={handleProjectSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="project-title">প্রকল্পের শিরোনাম</Label>
-                      <Input
-                        id="project-title"
-                        value={projectTitle}
-                        onChange={(e) => setProjectTitle(e.target.value)}
-                        placeholder="যেমন: আমার ব্যবসার জন্য লোগো ডিজাইন"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="project-description">প্রকল্পের বিবরণ</Label>
-                      <Textarea
-                        id="project-description"
-                        value={projectDescription}
-                        onChange={(e) => setProjectDescription(e.target.value)}
-                        placeholder="আপনার প্রয়োজনীয়তা বিস্তারিত বর্ণনা করুন..."
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="project-budget">বাজেট (টাকা)</Label>
-                      <Input
-                        id="project-budget"
-                        value={projectBudget}
-                        onChange={(e) => setProjectBudget(e.target.value)}
-                        placeholder="যেমন: ৫০০০-১০০০০"
-                        required
-                      />
-                    </div>
-                    <Button type="submit" className="w-full bg-green-700 hover:bg-green-800">
-                      AI ম্যাচ খুঁজুন
-                    </Button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-            </div>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>

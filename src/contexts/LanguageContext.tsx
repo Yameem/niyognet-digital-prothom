@@ -34,6 +34,41 @@ const translations = {
     'howItWorks.step3.title': 'অনুমোদন ও পেমেন্ট',
     'howItWorks.step3.desc': 'প্রতিটি মাইলস্টোন অনুমোদিত হওয়ার সাথে সাথে পেমেন্ট ছাড় করুন',
     
+    // Features
+    'features.title': 'কেন নিয়োগনেট বেছে নেবেন?',
+    'features.portfolios.title': 'বাস্তব পোর্টফলিও ও রিভিউ',
+    'features.portfolios.desc': 'আগে/পরে নমুনা এবং ক্লায়েন্ট রেটিং দেখুন',
+    'features.payments.title': 'মাইলস্টোন পেমেন্ট',
+    'features.payments.desc': 'আপনার শর্তে নিরাপদ পেমেন্ট ছাড়',
+    'features.workflow.title': 'গাইডেড ওয়ার্কফ্লো',
+    'features.workflow.desc': 'স্পষ্ট প্রকল্প পদক্ষেপ দিয়ে ট্র্যাকে থাকুন',
+    'features.localPayments.title': 'স্থানীয় পেমেন্ট',
+    'features.localPayments.desc': 'বিকাশ ও নগদের মাধ্যমে তাৎক্ষণিক, কম ফি ট্রান্সফার',
+    
+    // Testimonials
+    'testimonials.title': 'আমাদের ক্লায়েন্টরা কী বলেন',
+    
+    // CTA Section
+    'cta.title': 'আপনার প্রকল্প শুরু করতে প্রস্তুত?',
+    'cta.subtitle': 'হাজারো স্থানীয় ব্যবসার সাথে যোগ দিন যারা তাদের ফ্রিল্যান্সিং প্রয়োজনে নিয়োগনেটে বিশ্বাস করে',
+    'cta.findTalentButton': 'এখনই প্রতিভা খুঁজুন',
+    
+    // AI Matching Section
+    'aiMatching.title': 'বা আমাদের AI ম্যাচিং ব্যবহার করুন',
+    'aiMatching.subtitle': 'আপনার প্রকল্পের জন্য নিখুঁত ফ্রিল্যান্সার খুঁজে পেতে আমাদের স্মার্ট ম্যাচিং সিস্টেম ব্যবহার করুন',
+    'aiMatching.button': 'প্রকল্প পোস্ট করুন',
+    
+    // Project Form
+    'projectForm.title': 'আপনার প্রকল্পের বিবরণ',
+    'projectForm.titleLabel': 'প্রকল্পের শিরোনাম',
+    'projectForm.titlePlaceholder': 'যেমন: আমার ব্যবসার জন্য লোগো ডিজাইন',
+    'projectForm.descriptionLabel': 'প্রকল্পের বিবরণ',
+    'projectForm.descriptionPlaceholder': 'আপনার প্রয়োজনীয়তা বিস্তারিত বর্ণনা করুন...',
+    'projectForm.budgetLabel': 'বাজেট (টাকা)',
+    'projectForm.minBudgetPlaceholder': 'সর্বনিম্ন',
+    'projectForm.maxBudgetPlaceholder': 'সর্বোচ্চ',
+    'projectForm.submitButton': 'AI ম্যাচ খুঁজুন',
+    
     // Footer
     'footer.brand': 'নিয়োগনেট',
     'footer.description': 'বাংলাদেশের সেরা ফ্রিল্যান্সারদের স্থানীয় ব্যবসার সাথে সংযুক্ত করা',
@@ -71,6 +106,41 @@ const translations = {
     'howItWorks.step2.desc': 'We suggest top freelancers with real portfolios',
     'howItWorks.step3.title': 'Approve & Pay',
     'howItWorks.step3.desc': 'Release payment as each milestone is approved',
+    
+    // Features
+    'features.title': 'Why Choose NiyogNet?',
+    'features.portfolios.title': 'Real Portfolios & Reviews',
+    'features.portfolios.desc': 'See before/after samples and client ratings',
+    'features.payments.title': 'Milestone Payments',
+    'features.payments.desc': 'Secure payments released on your terms',
+    'features.workflow.title': 'Guided Workflows',
+    'features.workflow.desc': 'Stay on track with clear project steps',
+    'features.localPayments.title': 'Local Payments',
+    'features.localPayments.desc': 'Instant, low-fee transfers via bKash & Nagad',
+    
+    // Testimonials
+    'testimonials.title': 'What Our Clients Say',
+    
+    // CTA Section
+    'cta.title': 'Ready to Start Your Project?',
+    'cta.subtitle': 'Join thousands of local businesses who trust NiyogNet for their freelancing needs',
+    'cta.findTalentButton': 'Find Talent Now',
+    
+    // AI Matching Section
+    'aiMatching.title': 'Or Use Our AI Matching',
+    'aiMatching.subtitle': 'Use our smart matching system to find the perfect freelancer for your project',
+    'aiMatching.button': 'Post Project',
+    
+    // Project Form
+    'projectForm.title': 'Project Details',
+    'projectForm.titleLabel': 'Project Title',
+    'projectForm.titlePlaceholder': 'e.g., Logo design for my business',
+    'projectForm.descriptionLabel': 'Project Description',
+    'projectForm.descriptionPlaceholder': 'Describe your requirements in detail...',
+    'projectForm.budgetLabel': 'Budget (BDT)',
+    'projectForm.minBudgetPlaceholder': 'Minimum',
+    'projectForm.maxBudgetPlaceholder': 'Maximum',
+    'projectForm.submitButton': 'Find AI Matches',
     
     // Footer
     'footer.brand': 'NiyogNet',
