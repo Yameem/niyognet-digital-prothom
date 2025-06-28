@@ -1,11 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { CheckCircle, MessageSquare, Shield, Star } from "lucide-react";
+import { CheckCircle, MessageSquare, Shield, Star, Search } from "lucide-react";
 
 const testimonials = [
   {
@@ -30,6 +30,7 @@ const testimonials = [
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,6 +39,12 @@ const Index = () => {
     
     return () => clearInterval(timer);
   }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Navigate to search page with query (placeholder functionality)
+    console.log("Searching for:", searchQuery);
+  };
 
   return (
     <div className="min-h-screen">
@@ -49,7 +56,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=800&fit=crop')"
+            backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop')"
           }}
         ></div>
         
@@ -61,14 +68,22 @@ const Index = () => {
             Browse portfolios, set milestones, pay securely via bKash & Nagad
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-lg px-8 py-4">
-              I'm a Client
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-700 text-lg px-8 py-4">
-              I'm a Freelancer
-            </Button>
-          </div>
+          {/* Search Bar */}
+          <form onSubmit={handleSearch} className="max-w-2xl mx-auto animate-fade-in">
+            <div className="flex bg-white rounded-lg p-2 shadow-lg">
+              <Input
+                type="text"
+                placeholder="What service are you looking for?"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 border-0 text-gray-900 text-lg focus-visible:ring-0"
+              />
+              <Button type="submit" size="lg" className="bg-green-700 hover:bg-green-800 text-white px-8">
+                <Search className="h-5 w-5 mr-2" />
+                Search
+              </Button>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -96,7 +111,7 @@ const Index = () => {
                   <MessageSquare className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Match & Chat</h3>
-                <p className="text-gray-600">We suggest top student freelancers with real portfolios</p>
+                <p className="text-gray-600">We suggest top freelancers with real portfolios</p>
               </CardContent>
             </Card>
             
