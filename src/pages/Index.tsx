@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,6 +35,7 @@ const testimonials = [
 
 const Index = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [projectTitle, setProjectTitle] = useState("");
@@ -60,7 +61,7 @@ const Index = () => {
     e.preventDefault();
     console.log("Project submitted:", { projectTitle, projectDescription, minBudget, maxBudget });
     setIsDialogOpen(false);
-    // Navigate to search page with AI matches
+    navigate("/search-talent");
   };
 
   return (
@@ -68,20 +69,20 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-700 to-green-800 text-gray-900 py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative bg-gradient-to-r from-green-700 to-green-800 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-40"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center opacity-60"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop')"
+            backgroundImage: "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop')"
           }}
         ></div>
         
         <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in text-gray-900">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in text-white">
             {t('hero.title')}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in text-gray-800">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in text-white">
             {t('hero.subtitle')}
           </p>
           
