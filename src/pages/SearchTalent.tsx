@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -158,6 +159,17 @@ const SearchTalent = () => {
                       <SelectItem value="3.5">3.5+ Stars</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium mb-2">Payment Method</label>
+                  <div className="flex items-center space-x-2 p-3 bg-green-50 rounded-lg">
+                    <div className="flex space-x-1">
+                      <div className="w-6 h-6 bg-pink-500 rounded flex items-center justify-center text-white text-xs font-bold">b</div>
+                      <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">N</div>
+                    </div>
+                    <span className="text-sm text-green-700 font-medium">bKash & Nagad Only</span>
+                  </div>
                 </div>
               </div>
             </Card>
