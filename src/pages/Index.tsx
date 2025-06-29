@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -35,15 +34,15 @@ const Index = () => {
       <section 
         className="relative bg-cover bg-center py-24 px-4"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop")'
+          backgroundImage: 'url("https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=1200&h=800&fit=crop")'
         }}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-white/70"></div>
         <div className="relative container mx-auto text-center max-w-4xl">
-          <h1 className="text-5xl font-bold mb-6 text-white">
+          <h1 className="text-5xl font-bold mb-6 text-gray-900">
             {t('hero.title')}
           </h1>
-          <p className="text-xl mb-8 text-white">
+          <p className="text-xl mb-8 text-gray-800">
             {t('hero.subtitle')}
           </p>
           
@@ -76,10 +75,7 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Step 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">1</span>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 {t('howItWorks.step1.title')}
               </h3>
@@ -88,10 +84,7 @@ const Index = () => {
               </p>
             </div>
             {/* Step 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 {t('howItWorks.step2.title')}
               </h3>
@@ -100,10 +93,7 @@ const Index = () => {
               </p>
             </div>
             {/* Step 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">3</span>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 {t('howItWorks.step3.title')}
               </h3>
@@ -123,12 +113,7 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Feature 1 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {t('features.portfolios.title')}
               </h3>
@@ -137,12 +122,7 @@ const Index = () => {
               </p>
             </div>
             {/* Feature 2 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {t('features.payments.title')}
               </h3>
@@ -151,12 +131,7 @@ const Index = () => {
               </p>
             </div>
             {/* Feature 3 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {t('features.workflow.title')}
               </h3>
@@ -165,12 +140,7 @@ const Index = () => {
               </p>
             </div>
             {/* Feature 4 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
+            <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {t('features.localPayments.title')}
               </h3>
@@ -185,32 +155,14 @@ const Index = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">
             {t('testimonials.title')}
           </h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-              <div className="flex items-center justify-center mb-6">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <blockquote className="text-lg text-gray-600 italic mb-6">
-                "নিয়োগনেট আমাদের ব্যবসার জন্য সেরা ফ্রিল্যান্সার খুঁজে পেতে সাহায্য করেছে। তাদের প্ল্যাটফর্ম ব্যবহার করা সহজ এবং আমরা খুব দ্রুত একজন ভালো কন্টেন্ট রাইটার পেয়েছি।"
-              </blockquote>
-              <div className="flex items-center justify-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                <div>
-                  <div className="font-semibold text-gray-900">জন স্মিথ</div>
-                  <div className="text-gray-600">সিইও, টেক কোম্পানি</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="text-gray-600 italic max-w-2xl mx-auto">
+            "নিয়োগনেট আমাদের ব্যবসার জন্য সেরা ফ্রিল্যান্সার খুঁজে পেতে সাহায্য করেছে।
+            তাদের প্ল্যাটফর্ম ব্যবহার করা সহজ এবং আমরা খুব দ্রুত একজন ভালো কন্টেন্ট
+            রাইটার পেয়েছি।" - জন স্মিথ, সিইও
+          </p>
         </div>
       </section>
 
@@ -259,10 +211,10 @@ const Index = () => {
           <DialogHeader>
             <DialogTitle>{t('projectForm.title')}</DialogTitle>
             <DialogDescription>
-              {t('projectForm.description')}
+              {t('projectForm.descriptionPlaceholder')}
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleProjectSubmit} className="grid gap-4 py-4">
+          <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="title" className="text-right">
                 {t('projectForm.titleLabel')}
@@ -273,7 +225,6 @@ const Index = () => {
                 onChange={(e) => setProjectTitle(e.target.value)}
                 className="col-span-3" 
                 placeholder={t('projectForm.titlePlaceholder')} 
-                required
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -286,7 +237,6 @@ const Index = () => {
                 onChange={(e) => setProjectDescription(e.target.value)}
                 className="col-span-3" 
                 placeholder={t('projectForm.descriptionPlaceholder')} 
-                required
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -295,27 +245,23 @@ const Index = () => {
               </Label>
               <Input 
                 id="minBudget" 
-                type="number"
                 value={minBudget}
                 onChange={(e) => setMinBudget(e.target.value)}
                 className="col-span-1" 
                 placeholder={t('projectForm.minBudgetPlaceholder')} 
-                required
               />
               <Input 
                 id="maxBudget" 
-                type="number"
                 value={maxBudget}
                 onChange={(e) => setMaxBudget(e.target.value)}
                 className="col-span-1" 
                 placeholder={t('projectForm.maxBudgetPlaceholder')} 
-                required
               />
             </div>
-            <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-              {t('projectForm.submitButton')}
-            </Button>
-          </form>
+          </div>
+          <Button onClick={handleProjectSubmit} className="bg-blue-600 hover:bg-blue-700">
+            {t('projectForm.submitButton')}
+          </Button>
         </DialogContent>
       </Dialog>
       
