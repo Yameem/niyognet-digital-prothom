@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Star, Shield, MessageSquare, CheckCircle, Bell } from "lucide-react";
+import { Star, Shield, MessageSquare, CheckCircle } from "lucide-react";
 
 const freelancerData = {
   id: 1,
@@ -153,22 +152,6 @@ const FreelancerProfile = () => {
                   </div>
                   
                   <div className="flex space-x-3">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" className="flex items-center space-x-2">
-                          <Bell className="h-4 w-4" />
-                          <span>Schedule Call</span>
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>Schedule a Call</DialogTitle>
-                        </DialogHeader>
-                        <p className="text-gray-600">Call scheduling feature would be implemented here.</p>
-                        <Button className="mt-4">Request Call</Button>
-                      </DialogContent>
-                    </Dialog>
-                    
                     <Button className="bg-green-700 hover:bg-green-800 flex items-center space-x-2">
                       <span>Hire Me</span>
                     </Button>

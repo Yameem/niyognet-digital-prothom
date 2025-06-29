@@ -5,9 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Star, MessageSquare, Search } from "lucide-react";
+import { Star, MessageSquare, Search, ChevronDown, ChevronUp } from "lucide-react";
 
 const freelancers = [
   {
@@ -82,6 +83,7 @@ const SearchTalent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const filteredFreelancers = freelancers.filter(freelancer => {
     return (
@@ -94,73 +96,93 @@ const SearchTalent = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
+      {/* Top Search Bar */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 py-6">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex gap-4">
+              <div className="flex-1 relative">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  placeholder="Search for services or freelancers..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <Button className="bg-green-700 hover:bg-green-800">
+                Search
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Sidebar - Filters */}
+          {/* Left Sidebar - Collapsible Filters */}
           <div className="lg:w-1/4">
-            <Card className="p-6 sticky top-24">
-              <h3 className="text-lg font-semibold mb-4">Search & Filters</h3>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">What service do you need?</label>
-                  <div className="relative">
-                    <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input
-                      placeholder="Search for services..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10"
-                    />
+            <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
+              <Card className="sticky top-24">
+                <CollapsibleTrigger className="w-full p-6 flex items-center justify-between hover:bg-gray-50">
+                  <h3 className="text-lg font-semibold">Filters</h3>
+                  {isFiltersOpen ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </CollapsibleTrigger>
+                
+                <CollapsibleContent>
+                  <div className="px-6 pb-6 space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Category</label>
+                      <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select category" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white">
+                          <SelectItem value="social-posts">Social Posts</SelectItem>
+                          <SelectItem value="ad-setup">Ad Setup</SelectItem>
+                          <SelectItem value="copywriting">Copywriting</SelectItem>
+                          <SelectItem value="product-photos">Product Photos</SelectItem>
+                          <SelectItem value="web-design">Web Design</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Price Range</label>
+                      <Select value={priceRange} onValueChange={setPriceRange}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select price range" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white">
+                          <SelectItem value="under-1000">Under ৳১,০০০</SelectItem>
+                          <SelectItem value="1000-2000">৳১,০০০ - ৳২,০০০</SelectItem>
+                          <SelectItem value="2000-5000">৳২,০০০ - ৳৫,০০০</SelectItem>
+                          <SelectItem value="over-5000">Over ৳৫,০০০</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Rating</label>
+                      <Select>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Minimum rating" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white">
+                          <SelectItem value="4.5">4.5+ Stars</SelectItem>
+                          <SelectItem value="4.0">4.0+ Stars</SelectItem>
+                          <SelectItem value="3.5">3.5+ Stars</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Category</label>
-                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white">
-                      <SelectItem value="social-posts">Social Posts</SelectItem>
-                      <SelectItem value="ad-setup">Ad Setup</SelectItem>
-                      <SelectItem value="copywriting">Copywriting</SelectItem>
-                      <SelectItem value="product-photos">Product Photos</SelectItem>
-                      <SelectItem value="web-design">Web Design</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Price Range</label>
-                  <Select value={priceRange} onValueChange={setPriceRange}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select price range" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white">
-                      <SelectItem value="under-1000">Under ৳১,০০০</SelectItem>
-                      <SelectItem value="1000-2000">৳১,০০০ - ৳২,০০০</SelectItem>
-                      <SelectItem value="2000-5000">৳২,০০০ - ৳৫,০০০</SelectItem>
-                      <SelectItem value="over-5000">Over ৳৫,০০০</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Rating</label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Minimum rating" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white">
-                      <SelectItem value="4.5">4.5+ Stars</SelectItem>
-                      <SelectItem value="4.0">4.0+ Stars</SelectItem>
-                      <SelectItem value="3.5">3.5+ Stars</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </Card>
+                </CollapsibleContent>
+              </Card>
+            </Collapsible>
           </div>
           
           {/* Main Content Area */}
