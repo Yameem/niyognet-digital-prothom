@@ -7,10 +7,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Checkbox } from "@/components/ui/checkbox";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Star, MessageSquare, Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, MessageSquare, Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { useFilterContext } from "@/contexts/FilterContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const freelancers = [
@@ -104,7 +105,9 @@ const SearchTalent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceRange, setPriceRange] = useState([0, 10000]);
-  const [isProjectSidebarOpen, setIsProjectSidebarOpen] = useState(true);
+  const [featuredOnly, setFeaturedOnly] = useState(false);
+  const [minimumRating, setMinimumRating] = useState("");
+  const [isProjectSidebarOpen, setIsProjectSidebarOpen] = useState(false);
   const { language, t } = useLanguage();
 
   const filteredFreelancers = freelancers.filter(freelancer => {
@@ -145,110 +148,121 @@ const SearchTalent = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex gap-8 relative">
           {/* Fixed Left Filters */}
-          <div className="w-64 sticky top-24 h-fit">
-            <Card className="bg-gradient-to-b from-blue-50 to-indigo-50 border-blue-200">
-              <div className="p-6 space-y-6">
-                <h3 className="text-lg font-semibold text-blue-900">
-                  {language === 'bn' ? 'ফিল্টার' : 'Filters'}
-                </h3>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-3 text-blue-800">
-                    {language === 'bn' ? 'ক্যাটেগরি' : 'Category'}
-                  </label>
-                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                    <SelectTrigger className="border-blue-200 bg-white/80 hover:bg-white transition-colors">
-                      <SelectValue placeholder={language === 'bn' ? 'ক্যাটেগরি নির্বাচন করুন' : 'Select category'} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-blue-200">
-                      <SelectItem value="social-posts" className="hover:bg-blue-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-pink-400 rounded-full"></div>
-                          {language === 'bn' ? 'সোশ্যাল পোস্ট' : 'Social Posts'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="ad-setup" className="hover:bg-blue-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
-                          {language === 'bn' ? 'বিজ্ঞাপন সেটআপ' : 'Ad Setup'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="copywriting" className="hover:bg-blue-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                          {language === 'bn' ? 'কপিরাইটিং' : 'Copywriting'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="product-photos" className="hover:bg-blue-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
-                          {language === 'bn' ? 'প্রোডাক্ট ফটো' : 'Product Photos'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="web-design" className="hover:bg-blue-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-                          {language === 'bn' ? 'ওয়েব ডিজাইন' : 'Web Design'}
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+          <div className="w-80 sticky top-24 h-fit">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Filter className="h-5 w-5 text-gray-600" />
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {language === 'bn' ? 'ফিল্টার' : 'Filters'}
+                  </h3>
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-3 text-blue-800">
-                    {language === 'bn' ? 'মূল্য পরিসীমা' : 'Price Range'}
-                  </label>
-                  <div className="space-y-4">
-                    <div className="px-2">
-                      <Slider
-                        value={priceRange}
-                        onValueChange={setPriceRange}
-                        max={10000}
-                        min={0}
-                        step={100}
-                        className="w-full"
-                      />
-                    </div>
-                    <div className="flex justify-between text-sm text-blue-700 font-medium">
-                      <span>৳{priceRange[0].toLocaleString()}</span>
-                      <span>৳{priceRange[1].toLocaleString()}</span>
-                    </div>
+                <Button variant="ghost" size="sm" className="text-gray-500 hover:text-gray-700">
+                  {language === 'bn' ? 'সব পরিষ্কার করুন' : 'Clear All'}
+                </Button>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <Checkbox 
+                  id="featured" 
+                  checked={featuredOnly}
+                  onCheckedChange={setFeaturedOnly}
+                />
+                <label htmlFor="featured" className="text-sm font-medium text-gray-700">
+                  {language === 'bn' ? 'শুধুমাত্র ফিচার্ড' : 'Featured Only'}
+                </label>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-3 text-gray-700">
+                  {language === 'bn' ? 'ক্যাটেগরি' : 'Categories'}
+                </label>
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={language === 'bn' ? 'সব ক্যাটেগরি' : 'All Categories'} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    <SelectItem value="graphics-design" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'গ্রাফিক্স ও ডিজাইন' : 'Graphics & Design'}
+                    </SelectItem>
+                    <SelectItem value="digital-marketing" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'ডিজিটাল মার্কেটিং' : 'Digital Marketing'}
+                    </SelectItem>
+                    <SelectItem value="writing-translation" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'লেখা ও অনুবাদ' : 'Writing & Translation'}
+                    </SelectItem>
+                    <SelectItem value="video-animation" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'ভিডিও ও অ্যানিমেশন' : 'Video & Animation'}
+                    </SelectItem>
+                    <SelectItem value="programming-tech" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'প্রোগ্রামিং ও প্রযুক্তি' : 'Programming & Tech'}
+                    </SelectItem>
+                    <SelectItem value="business" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'ব্যবসা' : 'Business'}
+                    </SelectItem>
+                    <SelectItem value="lifestyle" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'জীবনযাত্রা' : 'Lifestyle'}
+                    </SelectItem>
+                    <SelectItem value="music-audio" className="hover:bg-gray-50">
+                      {language === 'bn' ? 'সংগীত ও অডিও' : 'Music & Audio'}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-3 text-gray-700">
+                  {language === 'bn' ? 'মূল্য পরিসীমা' : 'Price Range'}
+                </label>
+                <div className="space-y-4">
+                  <div className="px-2">
+                    <Slider
+                      value={priceRange}
+                      onValueChange={setPriceRange}
+                      max={10000}
+                      min={0}
+                      step={100}
+                      className="w-full"
+                    />
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600 font-medium">
+                    <span>৳{priceRange[0].toLocaleString()}</span>
+                    <span>৳{priceRange[1].toLocaleString()}</span>
                   </div>
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-3 text-blue-800">
-                    {language === 'bn' ? 'রেটিং' : 'Rating'}
-                  </label>
-                  <Select>
-                    <SelectTrigger className="border-blue-200 bg-white/80 hover:bg-white transition-colors">
-                      <SelectValue placeholder={language === 'bn' ? 'সর্বনিম্ন রেটিং' : 'Minimum rating'} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-blue-200">
-                      <SelectItem value="4.5" className="hover:bg-yellow-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                          {language === 'bn' ? '৪.৫+ তারকা' : '4.5+ Stars'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="4.0" className="hover:bg-yellow-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-yellow-300 rounded-full"></div>
-                          {language === 'bn' ? '৪.০+ তারকা' : '4.0+ Stars'}
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="3.5" className="hover:bg-yellow-50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-yellow-200 rounded-full"></div>
-                          {language === 'bn' ? '৩.৫+ তারকা' : '3.5+ Stars'}
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
-            </Card>
+              
+              <div>
+                <label className="block text-sm font-medium mb-3 text-gray-700">
+                  {language === 'bn' ? 'সর্বনিম্ন রেটিং' : 'Minimum Rating'}
+                </label>
+                <Select value={minimumRating} onValueChange={setMinimumRating}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={language === 'bn' ? 'কোন রেটিং নেই' : 'Any Rating'} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    <SelectItem value="5" className="hover:bg-yellow-50">
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                        <span>{language === 'bn' ? '৫+ তারকা' : '5+ stars'}</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="4.5" className="hover:bg-yellow-50">
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                        <span>{language === 'bn' ? '৪.৫+ তারকা' : '4.5+ stars'}</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="4" className="hover:bg-yellow-50">
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                        <span>{language === 'bn' ? '৪+ তারকা' : '4+ stars'}</span>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
           </div>
           
           {/* Main Content Area */}
@@ -357,68 +371,75 @@ const SearchTalent = () => {
             </div>
           </div>
           
-          {/* Collapsible Right Sidebar - Project Summary */}
-          <Collapsible open={isProjectSidebarOpen} onOpenChange={setIsProjectSidebarOpen}>
-            <div className="relative">
-              <CollapsibleTrigger className="fixed right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gradient-to-r from-green-600 to-green-700 text-white border-0 rounded-l-lg p-3 shadow-lg hover:from-green-700 hover:to-green-800 transition-all">
-                {isProjectSidebarOpen ? (
+          {/* Right Sidebar - Project Summary (Fixed Position) */}
+          <div className={`fixed right-0 top-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 z-50 ${isProjectSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className="p-6 space-y-4 mt-20">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-green-900">
+                  {language === 'bn' ? 'আপনার প্রকল্প' : 'Your Project'}
+                </h3>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => setIsProjectSidebarOpen(false)}
+                >
                   <ChevronRight className="h-4 w-4" />
-                ) : (
-                  <ChevronLeft className="h-4 w-4" />
-                )}
-              </CollapsibleTrigger>
+                </Button>
+              </div>
               
-              <CollapsibleContent>
-                <Card className="w-72 sticky top-24 bg-gradient-to-b from-green-50 to-emerald-50 border-green-200">
-                  <div className="p-6 space-y-4">
-                    <h3 className="text-lg font-semibold text-green-900">
-                      {language === 'bn' ? 'আপনার প্রকল্প' : 'Your Project'}
-                    </h3>
-                    
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-green-700 mb-1">
-                          {language === 'bn' ? 'সংক্ষিপ্ত বিবরণ' : 'Brief'}
-                        </label>
-                        <p className="text-sm text-green-800 bg-white/60 p-2 rounded">
-                          {language === 'bn' ? 'রেস্তোরাঁর জন্য সোশ্যাল মিডিয়া মার্কেটিং' : 'Social media marketing for restaurant'}
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-green-700 mb-1">
-                          {language === 'bn' ? 'বাজেট' : 'Budget'}
-                        </label>
-                        <p className="text-sm font-semibold text-green-800 bg-white/60 p-2 rounded">৳৫,০০০ - ৳১০,০০০</p>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-green-700 mb-1">
-                          {language === 'bn' ? 'সময়সীমা' : 'Deadline'}
-                        </label>
-                        <p className="text-sm text-green-800 bg-white/60 p-2 rounded">
-                          {language === 'bn' ? '২ সপ্তাহ' : '2 weeks'}
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-green-700 mb-1">
-                          {language === 'bn' ? 'পাওয়া ম্যাচ' : 'Matches Found'}
-                        </label>
-                        <p className="text-sm font-semibold text-green-800 bg-white/60 p-2 rounded">
-                          {filteredFreelancers.length} {language === 'bn' ? 'ফ্রিল্যান্সার' : 'freelancers'}
-                        </p>
-                      </div>
-                      
-                      <Button className="w-full bg-green-700 hover:bg-green-800 mt-6 shadow-lg">
-                        {language === 'bn' ? 'কাজের পোস্ট প্রকাশ করুন' : 'Publish Job Post'}
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </CollapsibleContent>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-green-700 mb-1">
+                    {language === 'bn' ? 'সংক্ষিপ্ত বিবরণ' : 'Brief'}
+                  </label>
+                  <p className="text-sm text-green-800 bg-green-50 p-2 rounded">
+                    {language === 'bn' ? 'রেস্তোরাঁর জন্য সোশ্যাল মিডিয়া মার্কেটিং' : 'Social media marketing for restaurant'}
+                  </p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-green-700 mb-1">
+                    {language === 'bn' ? 'বাজেট' : 'Budget'}
+                  </label>
+                  <p className="text-sm font-semibold text-green-800 bg-green-50 p-2 rounded">৳৫,০০০ - ৳১০,০০০</p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-green-700 mb-1">
+                    {language === 'bn' ? 'সময়সীমা' : 'Deadline'}
+                  </label>
+                  <p className="text-sm text-green-800 bg-green-50 p-2 rounded">
+                    {language === 'bn' ? '২ সপ্তাহ' : '2 weeks'}
+                  </p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-green-700 mb-1">
+                    {language === 'bn' ? 'পাওয়া ম্যাচ' : 'Matches Found'}
+                  </label>
+                  <p className="text-sm font-semibold text-green-800 bg-green-50 p-2 rounded">
+                    {filteredFreelancers.length} {language === 'bn' ? 'ফ্রিল্যান্সার' : 'freelancers'}
+                  </p>
+                </div>
+                
+                <Button className="w-full bg-green-700 hover:bg-green-800 mt-6 shadow-lg">
+                  {language === 'bn' ? 'কাজের পোস্ট প্রকাশ করুন' : 'Publish Job Post'}
+                </Button>
+              </div>
             </div>
-          </Collapsible>
+          </div>
+          
+          {/* Sidebar Toggle Button */}
+          <Button
+            onClick={() => setIsProjectSidebarOpen(!isProjectSidebarOpen)}
+            className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 bg-green-600 hover:bg-green-700 text-white p-3 rounded-l-lg shadow-lg"
+          >
+            {isProjectSidebarOpen ? (
+              <ChevronRight className="h-4 w-4" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" />
+            )}
+          </Button>
         </div>
       </div>
       
