@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState } from 'react';
 
 type Language = 'bn' | 'en';
@@ -80,58 +81,7 @@ const translations = {
     'footer.postJob': 'কাজ পোস্ট করুন',
     'footer.successStories': 'সফলতার গল্প',
     'footer.followUs': 'আমাদের ফলো করুন',
-    'footer.copyright': '© ২০২৫ নিয়োগনেট। সকল অধিকার সংরক্ষিত।',
-    
-    // Search Talent Page
-    'search.placeholder': 'সেবা বা ফ্রিল্যান্সার খুঁজুন...',
-    'search.button': 'খুঁজুন',
-    'search.filters': 'ফিল্টার',
-    'search.category': 'ক্যাটেগরি',
-    'search.selectCategory': 'ক্যাটেগরি নির্বাচন করুন',
-    'search.priceRange': 'মূল্য পরিসীমা',
-    'search.selectPriceRange': 'মূল্য পরিসীমা নির্বাচন করুন',
-    'search.rating': 'রেটিং',
-    'search.minRating': 'সর্বনিম্ন রেটিং',
-    'search.aiSuggested': 'AI সুপারিশকৃত ফ্রিল্যান্সার',
-    'search.allFreelancers': 'সকল ফ্রিল্যান্সার',
-    'search.results': 'ফলাফল',
-    'search.reviews': 'রিভিউ',
-    'search.startingAt': 'শুরু',
-    'search.viewProfile': 'প্রোফাইল দেখুন',
-    'search.chat': 'চ্যাট',
-    'search.yourProject': 'আপনার প্রকল্প',
-    'search.brief': 'সংক্ষিপ্ত বিবরণ',
-    'search.budget': 'বাজেট',
-    'search.deadline': 'সময়সীমা',
-    'search.matchesFound': 'পাওয়া ম্যাচ',
-    'search.freelancers': 'ফ্রিল্যান্সার',
-    'search.publishJob': 'কাজের পোস্ট প্রকাশ করুন',
-    
-    // Categories
-    'category.socialPosts': 'সোশ্যাল পোস্ট',
-    'category.adSetup': 'বিজ্ঞাপন সেটআপ',
-    'category.copywriting': 'কপিরাইটিং',
-    'category.productPhotos': 'প্রোডাক্ট ফটো',
-    'category.webDesign': 'ওয়েব ডিজাইন',
-    
-    // Price ranges
-    'price.under1000': '৳১,০০০ এর নিচে',
-    'price.1000to2000': '৳১,০০০ - ৳২,০০০',
-    'price.2000to5000': '৳২,০০০ - ৳৫,০০০',
-    'price.over5000': '৳৫,০০০ এর উপরে',
-    
-    // Ratings
-    'rating.4.5plus': '৪.৫+ তারকা',
-    'rating.4.0plus': '৪.০+ তারকা',
-    'rating.3.5plus': '৩.৫+ তারকা',
-    
-    // Skills
-    'skill.digitalMarketing': 'ডিজিটাল মার্কেটিং',
-    'skill.graphicDesign': 'গ্রাফিক ডিজাইন',
-    'skill.contentWriting': 'কন্টেন্ট রাইটিং',
-    'skill.socialMedia': 'সোশ্যাল মিডিয়া',
-    'skill.webDevelopment': 'ওয়েব ডেভেলপমেন্ট',
-    'skill.photography': 'ফটোগ্রাফি'
+    'footer.copyright': '© ২০২৫ নিয়োগনেট। সকল অধিকার সংরক্ষিত।'
   },
   en: {
     // Header
@@ -204,58 +154,7 @@ const translations = {
     'footer.postJob': 'Post a Job',
     'footer.successStories': 'Success Stories',
     'footer.followUs': 'Follow Us',
-    'footer.copyright': '© 2025 NiyogNet. All rights reserved.',
-    
-    // Search Talent Page
-    'search.placeholder': 'Search for services or freelancers...',
-    'search.button': 'Search',
-    'search.filters': 'Filters',
-    'search.category': 'Category',
-    'search.selectCategory': 'Select category',
-    'search.priceRange': 'Price Range',
-    'search.selectPriceRange': 'Select price range',
-    'search.rating': 'Rating',
-    'search.minRating': 'Minimum rating',
-    'search.aiSuggested': 'AI-Suggested Matches',
-    'search.allFreelancers': 'All Freelancers',
-    'search.results': 'results',
-    'search.reviews': 'reviews',
-    'search.startingAt': 'Starting at',
-    'search.viewProfile': 'View Profile',
-    'search.chat': 'Chat',
-    'search.yourProject': 'Your Project',
-    'search.brief': 'Brief',
-    'search.budget': 'Budget',
-    'search.deadline': 'Deadline',
-    'search.matchesFound': 'Matches Found',
-    'search.freelancers': 'freelancers',
-    'search.publishJob': 'Publish Job Post',
-    
-    // Categories
-    'category.socialPosts': 'Social Posts',
-    'category.adSetup': 'Ad Setup',
-    'category.copywriting': 'Copywriting',
-    'category.productPhotos': 'Product Photos',
-    'category.webDesign': 'Web Design',
-    
-    // Price ranges
-    'price.under1000': 'Under ৳1,000',
-    'price.1000to2000': '৳1,000 - ৳2,000',
-    'price.2000to5000': '৳2,000 - ৳5,000',
-    'price.over5000': 'Over ৳5,000',
-    
-    // Ratings
-    'rating.4.5plus': '4.5+ Stars',
-    'rating.4.0plus': '4.0+ Stars',
-    'rating.3.5plus': '3.5+ Stars',
-    
-    // Skills
-    'skill.digitalMarketing': 'Digital Marketing',
-    'skill.graphicDesign': 'Graphic Design',
-    'skill.contentWriting': 'Content Writing',
-    'skill.socialMedia': 'Social Media',
-    'skill.webDevelopment': 'Web Development',
-    'skill.photography': 'Photography'
+    'footer.copyright': '© 2025 NiyogNet. All rights reserved.'
   }
 };
 
