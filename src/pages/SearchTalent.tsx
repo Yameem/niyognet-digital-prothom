@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Star, MessageSquare, Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Filter } from "lucide-react";
-import { useFilterContext } from "@/contexts/FilterContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const freelancers = [
@@ -149,7 +147,7 @@ const SearchTalent = () => {
         <div className="flex gap-8 relative">
           {/* Fixed Left Filters */}
           <div className="w-80 sticky top-24 h-fit">
-            <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Filter className="h-5 w-5 text-gray-600" />
@@ -162,57 +160,63 @@ const SearchTalent = () => {
                 </Button>
               </div>
               
-              <div className="flex items-center space-x-2">
-                <Checkbox 
-                  id="featured" 
-                  checked={featuredOnly}
-                  onCheckedChange={setFeaturedOnly}
-                />
-                <label htmlFor="featured" className="text-sm font-medium text-gray-700">
-                  {language === 'bn' ? 'শুধুমাত্র ফিচার্ড' : 'Featured Only'}
-                </label>
+              {/* Featured Only Checkbox */}
+              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg border border-yellow-200">
+                <div className="flex items-center space-x-3">
+                  <Checkbox 
+                    id="featured" 
+                    checked={featuredOnly}
+                    onCheckedChange={(checked) => setFeaturedOnly(checked === true)}
+                    className="border-yellow-400 data-[state=checked]:bg-yellow-500 data-[state=checked]:border-yellow-500"
+                  />
+                  <label htmlFor="featured" className="text-sm font-medium text-yellow-800 cursor-pointer">
+                    ⭐ {language === 'bn' ? 'শুধুমাত্র ফিচার্ড' : 'Featured Only'}
+                  </label>
+                </div>
               </div>
               
-              <div>
-                <label className="block text-sm font-medium mb-3 text-gray-700">
-                  {language === 'bn' ? 'ক্যাটেগরি' : 'Categories'}
+              {/* Categories */}
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
+                <label className="block text-sm font-medium mb-3 text-blue-800">
+                  📂 {language === 'bn' ? 'ক্যাটেগরি' : 'Categories'}
                 </label>
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full border-blue-200 focus:border-blue-400">
                     <SelectValue placeholder={language === 'bn' ? 'সব ক্যাটেগরি' : 'All Categories'} />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
-                    <SelectItem value="graphics-design" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'গ্রাফিক্স ও ডিজাইন' : 'Graphics & Design'}
+                    <SelectItem value="graphics-design" className="hover:bg-blue-50">
+                      🎨 {language === 'bn' ? 'গ্রাফিক্স ও ডিজাইন' : 'Graphics & Design'}
                     </SelectItem>
-                    <SelectItem value="digital-marketing" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'ডিজিটাল মার্কেটিং' : 'Digital Marketing'}
+                    <SelectItem value="digital-marketing" className="hover:bg-blue-50">
+                      📱 {language === 'bn' ? 'ডিজিটাল মার্কেটিং' : 'Digital Marketing'}
                     </SelectItem>
-                    <SelectItem value="writing-translation" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'লেখা ও অনুবাদ' : 'Writing & Translation'}
+                    <SelectItem value="writing-translation" className="hover:bg-blue-50">
+                      ✍️ {language === 'bn' ? 'লেখা ও অনুবাদ' : 'Writing & Translation'}
                     </SelectItem>
-                    <SelectItem value="video-animation" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'ভিডিও ও অ্যানিমেশন' : 'Video & Animation'}
+                    <SelectItem value="video-animation" className="hover:bg-blue-50">
+                      🎬 {language === 'bn' ? 'ভিডিও ও অ্যানিমেশন' : 'Video & Animation'}
                     </SelectItem>
-                    <SelectItem value="programming-tech" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'প্রোগ্রামিং ও প্রযুক্তি' : 'Programming & Tech'}
+                    <SelectItem value="programming-tech" className="hover:bg-blue-50">
+                      💻 {language === 'bn' ? 'প্রোগ্রামিং ও প্রযুক্তি' : 'Programming & Tech'}
                     </SelectItem>
-                    <SelectItem value="business" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'ব্যবসা' : 'Business'}
+                    <SelectItem value="business" className="hover:bg-blue-50">
+                      💼 {language === 'bn' ? 'ব্যবসা' : 'Business'}
                     </SelectItem>
-                    <SelectItem value="lifestyle" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'জীবনযাত্রা' : 'Lifestyle'}
+                    <SelectItem value="lifestyle" className="hover:bg-blue-50">
+                      🌿 {language === 'bn' ? 'জীবনযাত্রা' : 'Lifestyle'}
                     </SelectItem>
-                    <SelectItem value="music-audio" className="hover:bg-gray-50">
-                      {language === 'bn' ? 'সংগীত ও অডিও' : 'Music & Audio'}
+                    <SelectItem value="music-audio" className="hover:bg-blue-50">
+                      🎵 {language === 'bn' ? 'সংগীত ও অডিও' : 'Music & Audio'}
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
-              <div>
-                <label className="block text-sm font-medium mb-3 text-gray-700">
-                  {language === 'bn' ? 'মূল্য পরিসীমা' : 'Price Range'}
+              {/* Price Range */}
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
+                <label className="block text-sm font-medium mb-4 text-green-800">
+                  💰 {language === 'bn' ? 'মূল্য পরিসীমা' : 'Price Range'}
                 </label>
                 <div className="space-y-4">
                   <div className="px-2">
@@ -222,22 +226,23 @@ const SearchTalent = () => {
                       max={10000}
                       min={0}
                       step={100}
-                      className="w-full"
+                      className="w-full [&>span:first-child]:bg-green-200 [&>span:first-child>span]:bg-green-500 [&>span:last-child>span]:border-green-500 [&>span:last-child>span]:bg-white"
                     />
                   </div>
-                  <div className="flex justify-between text-sm text-gray-600 font-medium">
+                  <div className="flex justify-between text-sm text-green-700 font-semibold bg-green-100 px-3 py-2 rounded-md">
                     <span>৳{priceRange[0].toLocaleString()}</span>
                     <span>৳{priceRange[1].toLocaleString()}</span>
                   </div>
                 </div>
               </div>
               
-              <div>
-                <label className="block text-sm font-medium mb-3 text-gray-700">
-                  {language === 'bn' ? 'সর্বনিম্ন রেটিং' : 'Minimum Rating'}
+              {/* Minimum Rating */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-200">
+                <label className="block text-sm font-medium mb-3 text-purple-800">
+                  ⭐ {language === 'bn' ? 'সর্বনিম্ন রেটিং' : 'Minimum Rating'}
                 </label>
                 <Select value={minimumRating} onValueChange={setMinimumRating}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full border-purple-200 focus:border-purple-400">
                     <SelectValue placeholder={language === 'bn' ? 'কোন রেটিং নেই' : 'Any Rating'} />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
