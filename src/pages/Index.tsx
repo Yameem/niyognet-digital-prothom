@@ -273,7 +273,7 @@ const Index = () => {
           </p>
           <Link to="/search-talent">
             <Button className="bg-white text-green-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-              {t('cta.button')}
+              Start Your Search
             </Button>
           </Link>
         </div>
