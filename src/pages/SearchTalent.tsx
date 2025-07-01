@@ -32,7 +32,7 @@ const freelancers = [
     skillBn: "গ্রাফিক ডিজাইন",
     rating: 4.8,
     reviews: 32,
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=150&h=150&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=150&h=150&fit=crop&crop=face",
     portfolio: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop",
     price: "১,২০০",
     priceEn: "1,200",
