@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ const testimonials = [
     name: "Afsar Ali",
     title: "CEO at StyleLab",
     comment: "Working with this platform has been a game-changer for our business. We've found top-notch talent and streamlined our project management process.",
-    image: "https://images.unsplash.com/photo-1531427186511-c25b4050efcd?w=100&h=100&fit=crop&crop=face"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
   },
   {
     id: 2,
@@ -35,35 +36,74 @@ const testimonials = [
   }
 ];
 
-const services = [
+const howItWorksSteps = [
   {
     id: 1,
-    title: "Web Development",
-    description: "Build responsive and scalable websites tailored to your business needs.",
-    icon: Clock
+    title: "Post Your Project",
+    titleBn: "আপনার প্রকল্প পোস্ট করুন",
+    description: "Submit your brief, budget, and timeline in minutes",
+    descriptionBn: "মিনিটেই আপনার বিবরণ, বাজেট এবং সময়সীমা জমা দিন",
+    icon: CheckCircle,
+    bgColor: "bg-green-100",
+    iconColor: "text-green-700"
   },
   {
     id: 2,
-    title: "Digital Marketing",
-    description: "Reach your target audience and grow your brand with effective marketing strategies.",
-    icon: MessageSquare
+    title: "Match & Chat",
+    titleBn: "ম্যাচ ও চ্যাট",
+    description: "We suggest top freelancers with real portfolios",
+    descriptionBn: "আমরা সত্যিকারের পোর্টফলিও সহ শীর্ষ ফ্রিল্যান্সারদের সুপারিশ করি",
+    icon: MessageSquare,
+    bgColor: "bg-blue-100",
+    iconColor: "text-blue-700"
   },
   {
     id: 3,
-    title: "Graphic Design",
-    description: "Create visually stunning designs that capture your brand's essence.",
-    icon: CheckCircle
+    title: "Approve & Pay",
+    titleBn: "অনুমোদন ও পেমেন্ট",
+    description: "Release payment as each milestone is approved",
+    descriptionBn: "প্রতিটি মাইলস্টোন অনুমোদিত হওয়ার সাথে সাথে পেমেন্ট ছাড় করুন",
+    icon: Shield,
+    bgColor: "bg-yellow-100",
+    iconColor: "text-yellow-700"
+  }
+];
+
+const features = [
+  {
+    id: 1,
+    title: "Real Portfolios & Reviews",
+    titleBn: "বাস্তব পোর্টফলিও ও রিভিউ",
+    description: "See before/after samples and client ratings",
+    descriptionBn: "আগে/পরে নমুনা এবং ক্লায়েন্ট রেটিং দেখুন",
+    icon: Star,
+    bgColor: "bg-green-100",
+    iconColor: "text-green-700"
   },
   {
-    id: 4,
-    title: "Content Writing",
-    description: "Engage your audience with compelling and informative content.",
-    icon: Users
+    id: 2,
+    title: "Milestone Payments",
+    titleBn: "মাইলস্টোন পেমেন্ট",
+    description: "Secure payments released on your terms",
+    descriptionBn: "আপনার শর্তে নিরাপদ পেমেন্ট ছাড়",
+    icon: Shield,
+    bgColor: "bg-blue-100",
+    iconColor: "text-blue-700"
+  },
+  {
+    id: 3,
+    title: "Guided Workflows",
+    titleBn: "গাইডেড ওয়ার্কফ্লো",
+    description: "Stay on track with clear project steps",
+    descriptionBn: "স্পষ্ট প্রকল্প পদক্ষেপ দিয়ে ট্র্যাকে থাকুন",
+    icon: CheckCircle,
+    bgColor: "bg-purple-100",
+    iconColor: "text-purple-700"
   }
 ];
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
@@ -195,24 +235,50 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* How It Works Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
-            {t('services.title')}
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            {language === 'bn' ? 'এটি কীভাবে কাজ করে' : 'How It Works'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <Card key={service.id} className="hover:shadow-lg transition-shadow hover-scale">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-700 mb-4 mx-auto">
-                    <service.icon className="h-6 w-6" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {howItWorksSteps.map((step) => (
+              <Card key={step.id} className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className={`flex items-center justify-center h-16 w-16 rounded-full ${step.bgColor} ${step.iconColor} mb-6 mx-auto`}>
+                    <step.icon className="h-8 w-8" />
                   </div>
-                  <h3 className="text-xl font-semibold text-center mb-2 text-gray-900">
-                    {service.title}
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                    {language === 'bn' ? step.titleBn : step.title}
                   </h3>
-                  <p className="text-gray-600 text-center">
-                    {service.description}
+                  <p className="text-gray-600">
+                    {language === 'bn' ? step.descriptionBn : step.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose NiyogNet Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            {language === 'bn' ? 'কেন নিয়োগনেট বেছে নেবেন?' : 'Why Choose NiyogNet?'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {features.map((feature) => (
+              <Card key={feature.id} className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className={`flex items-center justify-center h-16 w-16 rounded-full ${feature.bgColor} ${feature.iconColor} mb-6 mx-auto`}>
+                    <feature.icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                    {language === 'bn' ? feature.titleBn : feature.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {language === 'bn' ? feature.descriptionBn : feature.description}
                   </p>
                 </CardContent>
               </Card>
@@ -222,7 +288,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
             {t('testimonials.title')}
