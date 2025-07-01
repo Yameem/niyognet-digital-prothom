@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -32,7 +31,7 @@ const freelancers = [
     skillBn: "গ্রাফিক ডিজাইন",
     rating: 4.8,
     reviews: 32,
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=150&h=150&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     portfolio: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop",
     price: "১,২০০",
     priceEn: "1,200",
@@ -60,7 +59,7 @@ const freelancers = [
     skillBn: "সোশ্যাল মিডিয়া",
     rating: 5.0,
     reviews: 15,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b2933e?w=150&h=150&fit=crop&crop=face",
     portfolio: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=300&h=200&fit=crop",
     price: "১,০০০",
     priceEn: "1,000",

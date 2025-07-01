@@ -31,7 +31,7 @@ const testimonials = [
     name: "Fatima Khan",
     title: "Founder of TechSolutions",
     comment: "This platform has helped us scale our development team quickly and efficiently. The talent pool is diverse, and the communication tools are excellent.",
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=100&h=100&fit=crop&crop=face"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
   }
 ];
 
