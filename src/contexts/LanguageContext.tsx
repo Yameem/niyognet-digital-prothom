@@ -24,6 +24,19 @@ const translations = {
     'hero.searchPlaceholder': 'আপনি কোন সেবা খুঁজছেন?',
     'hero.searchButton': 'খুঁজুন',
     
+    // AI Matching Section
+    'hero.aiMatching.title': 'AI-এর সাহায্যে নিখুঁত ফ্রিল্যান্সার খুঁজুন',
+    'hero.aiMatching.subtitle': 'আপনার প্রকল্পের বিষয়ে বলুন এবং আমাদের AI আপনার জন্য সেরা ফ্রিল্যান্সারদের খুঁজে দিক',
+    'hero.aiMatching.button': 'AI ম্যাচিং ব্যবহার করুন',
+    'hero.aiMatching.dialogTitle': 'AI-ম্যাচিং ফ্রিল্যান্সার পান',
+    'hero.aiMatching.projectTitle': 'প্রকল্পের শিরোনাম',
+    'hero.aiMatching.projectTitlePlaceholder': 'যেমন: রেস্তোরাঁর জন্য সোশ্যাল মিডিয়া মার্কেটিং',
+    'hero.aiMatching.deadline': 'সময়সীমা',
+    'hero.aiMatching.deadlinePlaceholder': 'যেমন: ২ সপ্তাহ, ১ মাস',
+    'hero.aiMatching.minBudget': 'সর্বনিম্ন বাজেট (৳)',
+    'hero.aiMatching.maxBudget': 'সর্বোচ্চ বাজেট (৳)',
+    'hero.aiMatching.findMatches': 'AI ম্যাচ খুঁজুন',
+    
     // How It Works
     'howItWorks.title': 'এটি কীভাবে কাজ করে',
     'howItWorks.step1.title': 'আপনার প্রকল্প পোস্ট করুন',
@@ -147,6 +160,19 @@ const translations = {
     'hero.subtitle': 'Browse portfolios, set milestones, pay securely via bKash & Nagad',
     'hero.searchPlaceholder': 'What service are you looking for?',
     'hero.searchButton': 'Search',
+    
+    // AI Matching Section
+    'hero.aiMatching.title': 'Get AI-Matched with Perfect Freelancers',
+    'hero.aiMatching.subtitle': 'Tell us about your project and let our AI find the best freelancers for you',
+    'hero.aiMatching.button': 'Try AI Matching',
+    'hero.aiMatching.dialogTitle': 'Get AI-Matched Freelancers',
+    'hero.aiMatching.projectTitle': 'Project Title',
+    'hero.aiMatching.projectTitlePlaceholder': 'e.g., Social media marketing for restaurant',
+    'hero.aiMatching.deadline': 'Deadline',
+    'hero.aiMatching.deadlinePlaceholder': 'e.g., 2 weeks, 1 month',
+    'hero.aiMatching.minBudget': 'Min Budget (৳)',
+    'hero.aiMatching.maxBudget': 'Max Budget (৳)',
+    'hero.aiMatching.findMatches': 'Find AI Matches',
     
     // How It Works
     'howItWorks.title': 'How It Works',

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -29,10 +28,10 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Imran Hossain",
+    name: "Fatima Khan",
     title: "Founder of TechSolutions",
     comment: "This platform has helped us scale our development team quickly and efficiently. The talent pool is diverse, and the communication tools are excellent.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=100&h=100&fit=crop&crop=face"
   }
 ];
 
@@ -171,33 +170,33 @@ const Index = () => {
 
           {/* AI Matching CTA */}
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
-            <h3 className="text-xl font-semibold mb-3 text-white">Get AI-Matched with Perfect Freelancers</h3>
-            <p className="text-white/90 mb-4">Tell us about your project and let our AI find the best freelancers for you</p>
+            <h3 className="text-xl font-semibold mb-3 text-white">{t('hero.aiMatching.title')}</h3>
+            <p className="text-white/90 mb-4">{t('hero.aiMatching.subtitle')}</p>
             
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button variant="secondary" className="bg-white text-green-700 hover:bg-gray-100">
-                  Try AI Matching
+                  {t('hero.aiMatching.button')}
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Get AI-Matched Freelancers</DialogTitle>
+                  <DialogTitle>{t('hero.aiMatching.dialogTitle')}</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleAIMatchSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Project Title</label>
+                    <label className="block text-sm font-medium mb-2">{t('hero.aiMatching.projectTitle')}</label>
                     <Input
-                      placeholder="e.g., Social media marketing for restaurant"
+                      placeholder={t('hero.aiMatching.projectTitlePlaceholder')}
                       value={projectTitle}
                       onChange={(e) => setProjectTitle(e.target.value)}
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Deadline</label>
+                    <label className="block text-sm font-medium mb-2">{t('hero.aiMatching.deadline')}</label>
                     <Input
-                      placeholder="e.g., 2 weeks, 1 month"
+                      placeholder={t('hero.aiMatching.deadlinePlaceholder')}
                       value={deadline}
                       onChange={(e) => setDeadline(e.target.value)}
                       required
@@ -205,7 +204,7 @@ const Index = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Min Budget (৳)</label>
+                      <label className="block text-sm font-medium mb-2">{t('hero.aiMatching.minBudget')}</label>
                       <Input
                         type="number"
                         placeholder="5000"
@@ -215,7 +214,7 @@ const Index = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Max Budget (৳)</label>
+                      <label className="block text-sm font-medium mb-2">{t('hero.aiMatching.maxBudget')}</label>
                       <Input
                         type="number"
                         placeholder="10000"
@@ -226,7 +225,7 @@ const Index = () => {
                     </div>
                   </div>
                   <Button type="submit" className="w-full bg-green-700 hover:bg-green-800">
-                    Find AI Matches
+                    {t('hero.aiMatching.findMatches')}
                   </Button>
                 </form>
               </DialogContent>
