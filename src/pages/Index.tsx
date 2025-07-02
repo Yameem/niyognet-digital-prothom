@@ -132,7 +132,7 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-700 to-green-800 text-white py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-primary to-primary text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-60"
@@ -161,7 +161,7 @@ const Index = () => {
                   className="text-gray-900"
                 />
               </div>
-              <Button className="bg-green-700 hover:bg-green-800 text-white px-8">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
                 <Search className="h-4 w-4 mr-2" />
                 {t('hero.searchButton')}
               </Button>
@@ -175,7 +175,7 @@ const Index = () => {
             
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button variant="secondary" className="bg-white text-green-700 hover:bg-gray-100">
+                <Button variant="secondary" className="bg-white text-primary hover:bg-gray-100">
                   {t('hero.aiMatching.button')}
                 </Button>
               </DialogTrigger>
@@ -224,7 +224,7 @@ const Index = () => {
                       />
                     </div>
                   </div>
-                  <Button type="submit" className="w-full bg-green-700 hover:bg-green-800">
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                     {t('hero.aiMatching.findMatches')}
                   </Button>
                 </form>
@@ -328,7 +328,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-24 bg-gradient-to-r from-green-600 to-green-700 text-white">
+      <section className="py-24 bg-gradient-to-r from-primary to-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">
             {t('cta.title')}
@@ -337,7 +337,7 @@ const Index = () => {
             {t('cta.subtitle')}
           </p>
           <Link to="/search-talent">
-            <Button className="bg-white text-green-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+            <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
               Start Your Search
             </Button>
           </Link>
