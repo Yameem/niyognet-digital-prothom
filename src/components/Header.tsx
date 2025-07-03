@@ -39,7 +39,7 @@ const Header = () => {
             variant="ghost"
             size="sm"
             onClick={toggleLanguage}
-            className="text-muted-foreground hover:text-primary hover:bg-accent"
+            className="text-muted-foreground hover:text-white hover:bg-primary"
           >
             <Globe className="h-4 w-4 mr-2" />
             {language === 'bn' ? 'EN' : 'বাং'}
@@ -78,7 +78,7 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={toggleLanguage}
-                  className="text-muted-foreground hover:text-primary justify-start"
+                  className="text-muted-foreground hover:text-white hover:bg-primary justify-start"
                 >
                   <Globe className="h-4 w-4 mr-2" />
                   {language === 'bn' ? 'English' : 'বাংলা'}
