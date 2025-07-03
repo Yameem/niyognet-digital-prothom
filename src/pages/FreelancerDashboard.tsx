@@ -218,7 +218,7 @@ const FreelancerDashboard = () => {
                       <h3 className="font-semibold text-lg">{gig.title}</h3>
                       <Badge 
                         variant={gig.status === 'active' ? 'default' : 'secondary'}
-                        className={gig status === 'active' ? 'bg-green-100 text-green-800' : ''}
+                        className={gig.status === 'active' ? 'bg-green-100 text-green-800' : ''}
                       >
                         {gig.status === 'active' ? 
                           (language === 'bn' ? 'সক্রিয়' : 'Active') : 
