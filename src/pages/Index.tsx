@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -125,6 +126,12 @@ const Index = () => {
     console.log("Project submitted:", { projectTitle, deadline, minBudget, maxBudget });
     setIsDialogOpen(false);
     navigate("/search-talent");
+    setTimeout(() => window.scrollTo(0, 0), 100);
+  };
+
+  const handleStartSearch = () => {
+    navigate("/search-talent");
+    setTimeout(() => window.scrollTo(0, 0), 100);
   };
 
   return (
@@ -336,11 +343,12 @@ const Index = () => {
           <p className="text-xl mb-12 max-w-3xl mx-auto">
             {t('cta.subtitle')}
           </p>
-          <Link to="/search-talent">
-            <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-              Start Your Search
-            </Button>
-          </Link>
+          <Button 
+            onClick={handleStartSearch}
+            className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
+          >
+            Start Your Search
+          </Button>
         </div>
       </section>
       
