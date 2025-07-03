@@ -1,6 +1,5 @@
-
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Globe, User, Briefcase } from "lucide-react";
@@ -10,6 +9,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profileType, setProfileType] = useState<'client' | 'freelancer'>('client');
   const { language, toggleLanguage, t } = useLanguage();
+  const location = useLocation();
+
+  // Set profile type based on current route
+  useEffect(() => {
+    if (location.pathname === '/freelancer-dashboard') {
+      setProfileType('freelancer');
+    }
+  }, [location.pathname]);
 
   const toggleProfileType = () => {
     setProfileType(prev => prev === 'client' ? 'freelancer' : 'client');
