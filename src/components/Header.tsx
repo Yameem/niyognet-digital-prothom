@@ -3,12 +3,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Globe } from "lucide-react";
+import { Menu, Globe, User, Briefcase } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [profileType, setProfileType] = useState<'client' | 'freelancer'>('client');
   const { language, toggleLanguage, t } = useLanguage();
+
+  const toggleProfileType = () => {
+    setProfileType(prev => prev === 'client' ? 'freelancer' : 'client');
+  };
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -42,11 +47,34 @@ const Header = () => {
             className="text-muted-foreground hover:text-white hover:bg-primary"
           >
             <Globe className="h-4 w-4 mr-2" />
-            {language === 'bn' ? 'EN' : 'বাং'}
+            {language === 'bn' ? 'বাংলা' : 'English'}
           </Button>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleProfileType}
+            className="text-muted-foreground"
+          >
+            {profileType === 'client' ? <User className="h-4 w-4 mr-2" /> : <Briefcase className="h-4 w-4 mr-2" />}
+            {profileType === 'client' ? 
+              (language === 'bn' ? 'ক্লায়েন্ট' : 'Client') : 
+              (language === 'bn' ? 'ফ্রিল্যান্সার' : 'Freelancer')
+            }
+          </Button>
+          
+          {profileType === 'freelancer' && (
+            <Link to="/freelancer-dashboard">
+              <Button variant="ghost" className="text-muted-foreground">
+                {language === 'bn' ? 'ড্যাশবোর্ড' : 'Dashboard'}
+              </Button>
+            </Link>
+          )}
+          
           <Button variant="ghost" className="text-muted-foreground">
             {t('nav.login')}
           </Button>
+          
           <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
             {t('nav.getStarted')}
           </Button>
@@ -81,8 +109,30 @@ const Header = () => {
                   className="text-muted-foreground hover:text-white hover:bg-primary justify-start"
                 >
                   <Globe className="h-4 w-4 mr-2" />
-                  {language === 'bn' ? 'English' : 'বাংলা'}
+                  {language === 'bn' ? 'বাংলা' : 'English'}
                 </Button>
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={toggleProfileType}
+                  className="text-muted-foreground justify-start"
+                >
+                  {profileType === 'client' ? <User className="h-4 w-4 mr-2" /> : <Briefcase className="h-4 w-4 mr-2" />}
+                  {profileType === 'client' ? 
+                    (language === 'bn' ? 'ক্লায়েন্ট' : 'Client') : 
+                    (language === 'bn' ? 'ফ্রিল্যান্সার' : 'Freelancer')
+                  }
+                </Button>
+                
+                {profileType === 'freelancer' && (
+                  <Link to="/freelancer-dashboard">
+                    <Button variant="ghost" className="text-muted-foreground w-full justify-start">
+                      {language === 'bn' ? 'ড্যাশবোর্ড' : 'Dashboard'}
+                    </Button>
+                  </Link>
+                )}
+                
                 <Button variant="ghost" className="text-muted-foreground">
                   {t('nav.login')}
                 </Button>

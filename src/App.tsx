@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import SearchTalent from "./pages/SearchTalent";
 import FreelancerProfile from "./pages/FreelancerProfile";
+import FreelancerDashboard from "./pages/FreelancerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/search-talent" element={<SearchTalent />} />
             <Route path="/freelancer/:id" element={<FreelancerProfile />} />
+            <Route path="/freelancer-dashboard" element={<FreelancerDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -2,6 +2,7 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface Freelancer {
   id: number;
@@ -22,6 +23,12 @@ interface AIMatchesSectionProps {
 }
 
 const AIMatchesSection = ({ freelancers, language }: AIMatchesSectionProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (freelancerId: number) => {
+    navigate(`/freelancer/${freelancerId}`);
+  };
+
   return (
     <div className="mb-8">
       <h2 className="text-xl font-semibold mb-4">
@@ -29,7 +36,11 @@ const AIMatchesSection = ({ freelancers, language }: AIMatchesSectionProps) => {
       </h2>
       <div className="flex overflow-x-auto space-x-4 pb-4">
         {freelancers.slice(0, 3).map((freelancer) => (
-          <Card key={freelancer.id} className="min-w-[280px] hover:shadow-lg transition-shadow">
+          <Card 
+            key={freelancer.id} 
+            className="min-w-[280px] hover:shadow-lg transition-shadow cursor-pointer"
+            onClick={() => handleCardClick(freelancer.id)}
+          >
             <CardContent className="p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <img
